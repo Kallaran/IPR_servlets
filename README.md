@@ -1,3 +1,18 @@
+# TP6 : Les servlets
+
+Question : Expliquez la signification de l'erreur 405.
+
+![](https://i.imgur.com/EnRfHZj.png)
+
+Le code de statut de réponse HTTP 405 Method Not Allowed indique que la méthode utilisée (GET) pour la requête est connue du serveur mais qu'elle n'est pas supportée par la ressource ciblée.
+
+Pour corriger cela il suffit de override doGet :
+
+![](https://i.imgur.com/JGjvbPi.png)
+
+
+
+
 # Squelette du TP
 
 ## Utilisation
