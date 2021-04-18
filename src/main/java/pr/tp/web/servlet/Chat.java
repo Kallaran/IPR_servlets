@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/chat")
 public class Chat extends HttpServlet {
@@ -34,6 +35,19 @@ public class Chat extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		
+	    HttpSession session = request.getSession(false);
+	    
+
+	    
+	    // if the current session is null the user is redirected to the login page
+	    if(session == null) {
+			RequestDispatcher dispatcher = request.getServletContext()
+					.getRequestDispatcher("/login.jsp");
+			dispatcher.forward(request, response);
+	    }
+	    
+	  
 		request.setAttribute("chatContent", chatContent.toString());
 		RequestDispatcher dispatcher = request.getServletContext()
 				.getRequestDispatcher("/chat.jsp");
@@ -44,14 +58,26 @@ public class Chat extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		String user = request.getParameter("user");
 		
+		//if user != null, this is a new user and we create a session for him
+		if (user != null) {
+		    HttpSession session = request.getSession(true);
+		    session.setAttribute("session.user", user);
+		}
+
+
+		
+	    HttpSession session = request.getSession(false);
+	    String user_session = (String) session.getAttribute("session.user");
+
 		String action = request.getParameter("action");
 		String ligne = request.getParameter("ligne");
 
-		if (action != null && action.equals("submit")) {
-		    // Ajouter la ligne au contenu
-			chatContent.append(ligne).append("\n");	
 
+		if (action != null && action.equals("submit")) {
+		    //Add the new line
+			chatContent.append(user_session).append(ligne).append("\n");	
 		}
 
 		
