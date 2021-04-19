@@ -23,7 +23,7 @@ public class ServletAvecParam extends HttpServlet {
 		while (e2.hasMoreElements()) {
 			String key = e2.nextElement();
 			String value = config.getInitParameter(key);
-			System.out.println(" " + key + " = " + value);
+			System.out.println(" " + key + " jjh= " + value);
 		}
 		// Récupération des paramètres de l'application :
 		ServletContext context = config.getServletContext();
@@ -31,7 +31,7 @@ public class ServletAvecParam extends HttpServlet {
 		while (e.hasMoreElements()) {
 			String key = e.nextElement();
 			Object value = context.getInitParameter(key);
-			System.out.println(" " + key + " = " + value);
+			System.out.println(" " + key + " jk= " + value);
 		}
 	}
 

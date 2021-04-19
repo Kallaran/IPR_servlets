@@ -22,11 +22,14 @@ public class Chat extends HttpServlet {
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
+
+		
+		ServletContext context = config.getServletContext();		
 		chatContent = new StringBuffer();
+		
+		String welcome = context.getInitParameter("welcome");
+		chatContent.append(welcome).append("\n");
 
-		chatContent.append("Bienvenue sur le chat").append("\n");
-
-		chatContent.append("Soyez polis").append("\n");	
 
 	}
 	
@@ -41,17 +44,18 @@ public class Chat extends HttpServlet {
 
 	    
 	    // if the current session is null the user is redirected to the login page
-	    if(session == null) {
+	    if(session == null || session.getAttribute("session.user") == null) {
 			RequestDispatcher dispatcher = request.getServletContext()
 					.getRequestDispatcher("/login.jsp");
 			dispatcher.forward(request, response);
 	    }
 	    
-	  
-		request.setAttribute("chatContent", chatContent.toString());
-		RequestDispatcher dispatcher = request.getServletContext()
-				.getRequestDispatcher("/chat.jsp");
-		dispatcher.forward(request, response);
+	    else {	    	
+			request.setAttribute("chatContent", chatContent.toString());
+			RequestDispatcher dispatcher = request.getServletContext()
+					.getRequestDispatcher("/chat.jsp");
+			dispatcher.forward(request, response);
+	    }
 	}
 	
 	@Override
@@ -69,22 +73,34 @@ public class Chat extends HttpServlet {
 
 		
 	    HttpSession session = request.getSession(false);
-	    String user_session = (String) session.getAttribute("session.user");
+	    
+	    // if the current session is null the user is redirected to the login page
+	    if(session == null || session.getAttribute("session.user") == null) {
+			RequestDispatcher dispatcher = request.getServletContext()
+					.getRequestDispatcher("/login.jsp");
+			dispatcher.forward(request, response);
+	    }
+	    else {
+		    String user_session = (String) session.getAttribute("session.user");
 
-		String action = request.getParameter("action");
-		String ligne = request.getParameter("ligne");
+			String action = request.getParameter("action");
+			String ligne = request.getParameter("ligne");
 
 
-		if (action != null && action.equals("submit")) {
-		    //Add the new line
-			chatContent.append(user_session).append(ligne).append("\n");	
-		}
+			if (action != null && action.equals("submit")) {
+			    //Add the new line
+				chatContent.append(user_session).append(ligne).append("\n");	
+			}
 
-		
-		request.setAttribute("chatContent", chatContent.toString());
-		RequestDispatcher dispatcher = request.getServletContext()
-				.getRequestDispatcher("/chat.jsp");
-		dispatcher.forward(request, response);
+			
+			request.setAttribute("chatContent", chatContent.toString());
+			RequestDispatcher dispatcher = request.getServletContext()
+					.getRequestDispatcher("/chat.jsp");
+			dispatcher.forward(request, response);
+	    	
+	    }
+	    
+
 	}
 	
 	
