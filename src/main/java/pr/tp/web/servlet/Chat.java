@@ -81,15 +81,16 @@ public class Chat extends HttpServlet {
 			dispatcher.forward(request, response);
 	    }
 	    else {
-		    String user_session = (String) session.getAttribute("session.user");
 
 			String action = request.getParameter("action");
+			
+			String date = request.getParameter("date") + " ";
+		    String user_session = (String) session.getAttribute("session.user") + " : ";
 			String ligne = request.getParameter("ligne");
-
 
 			if (action != null && action.equals("submit")) {
 			    //Add the new line
-				chatContent.append(user_session).append(ligne).append("\n");	
+				chatContent.append(date).append(user_session).append(ligne).append("\n");	
 			}
 
 			
