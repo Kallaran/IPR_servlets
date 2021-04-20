@@ -25,9 +25,9 @@ public class Chat extends HttpServlet {
 
 		
 		ServletContext context = config.getServletContext();		
-		chatContent = new StringBuffer();
-		
 		String welcome = context.getInitParameter("welcome");
+		
+		chatContent = new StringBuffer();
 		chatContent.append(welcome).append("\n");
 
 
@@ -49,7 +49,7 @@ public class Chat extends HttpServlet {
 					.getRequestDispatcher("/login.jsp");
 			dispatcher.forward(request, response);
 	    }
-	    
+	    // else refresh chatContent
 	    else {	    	
 			request.setAttribute("chatContent", chatContent.toString());
 			RequestDispatcher dispatcher = request.getServletContext()
@@ -73,6 +73,8 @@ public class Chat extends HttpServlet {
 
 		
 	    HttpSession session = request.getSession(false);
+		String action = request.getParameter("action");
+
 	    
 	    // if the current session is null the user is redirected to the login page
 	    if(session == null || session.getAttribute("session.user") == null) {
@@ -80,20 +82,24 @@ public class Chat extends HttpServlet {
 					.getRequestDispatcher("/login.jsp");
 			dispatcher.forward(request, response);
 	    }
-	    else {
+	    //logout from the session
+	    else if(action != null && action.equals("logout")) {
+	    	session.invalidate();
+			RequestDispatcher dispatcher = request.getServletContext()
+					.getRequestDispatcher("/login.jsp");
+			dispatcher.forward(request, response);
+	    }
+	    else {			
 
-			String action = request.getParameter("action");
-			
-			String date = request.getParameter("date") + " ";
-		    String user_session = (String) session.getAttribute("session.user") + " : ";
-			String ligne = request.getParameter("ligne");
-
+		    //Add the new line
 			if (action != null && action.equals("submit")) {
-			    //Add the new line
+				String date = request.getParameter("date") + " ";
+			    String user_session = (String) session.getAttribute("session.user") + " : ";
+				String ligne = request.getParameter("ligne");
 				chatContent.append(date).append(user_session).append(ligne).append("\n");	
 			}
 
-			
+			//refresh chatContent
 			request.setAttribute("chatContent", chatContent.toString());
 			RequestDispatcher dispatcher = request.getServletContext()
 					.getRequestDispatcher("/chat.jsp");
