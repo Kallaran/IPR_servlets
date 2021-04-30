@@ -9,26 +9,6 @@
 		<param-name>welcome</param-name>
 		<param-value>Bienvenue sur le chat. Soyez polis</param-value>
 	</context-param>
-	<context-param>
-		<param-name>name</param-name>
-		<param-value>Joe</param-value>
-	</context-param>
-	<context-param>
-		<param-name>password</param-name>
-		<param-value>password</param-value>
-	</context-param>
-
-	<!-- Le code suivant n'est utile que si vous voulez passer des paramètres 
-		à la servlet sinon l'annotation est suffisante -->
-	<servlet>
-		<servlet-name>params</servlet-name>
-		<servlet-class>pr.tp.web.example.ServletAvecParam</servlet-class>
-		<init-param>
-			<param-name>langue</param-name>
-			<param-value>fr</param-value>
-		</init-param>
-	</servlet>
-
 
 
 	<servlet>
