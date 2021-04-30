@@ -1,0 +1,24 @@
+@charset "ISO-8859-1";
+
+.text-content {
+	overflow: auto;
+	margin-top: 2%;
+	height: 70%;
+	display: flex;
+	flex-direction: column-reverse;
+	background-color: #EAF2F8;
+	padding: 1%;
+}
+
+.chat-title {
+	margin-top: 2%;
+	color: #ABB2B9  ;
+}
+
+.body {
+	background-color: #D4E6F1;
+}
+
+.in {
+	display : inline-block;
+}

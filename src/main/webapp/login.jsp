@@ -27,7 +27,7 @@
 		<form action="chat" method="post">
 			<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-			<div class="form-floating">
+			<div class="form-floating mb-2">
 				<input type="text" name="user" class="form-control"
 					id="floatingInput"> <label for="floatingInput">Username</label>
 			</div>
