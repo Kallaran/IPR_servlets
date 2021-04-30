@@ -32,6 +32,29 @@ Dans web.xml nous avons définit login.jsp comme page d'accueil du site web :
 	</welcome-file-list>
 ```
 
+### Lancer dans Tomcat sans passer par Eclipse
+
+Un fichier WAR, pr.tp.web.war a été généré avec "export" > "WAR file" sur le projet dans Eclipse.
+
+Déplacez ce WAR dans le dossier "webapps" de "apache-tomcat-9.0.X".
+
+Définissez la variable d'environnement "CATALINA_HOME" avec pour valeur le chemin vers le dossier "apache-tomcat-9.0.X"
+
+Ainsi que "JRE_HOME" avec le chemin vers une JRE.
+
+
+![](https://i.imgur.com/MR5yD23.png)
+
+Vous pouvez maintenant lancer le script startup.bat contenu dans "apache-tomcat-9.0.X/bin"
+
+![](https://i.imgur.com/K6EIEAF.png)
+![](https://i.imgur.com/HOvrrJI.png)
+
+
+
+
+
+
 ### Question : Expliquez la signification de l'erreur 405.
 
 ![](https://i.imgur.com/EnRfHZj.png)
@@ -41,3 +64,5 @@ Le code de statut de réponse HTTP 405 Method Not Allowed indique que la méthod
 Pour corriger cela il suffit de override doGet :
 
 ![](https://i.imgur.com/JGjvbPi.png)
+
+
