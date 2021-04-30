@@ -1,9 +1,9 @@
-## TP6 : Les servlets
+# TP6 : Les servlets
 
 L'objectif de ce tp est de se familiariser avec les servlets et les technologies associées en développant un chat.
 
 
-### Configuration du projet
+# Configuration du projet
 
 1. Téléchargez la dernière version d'Eclipse IDE for Java EE Developers.
 2. Clonez ce repo dans le workplace d'Eclipse.
@@ -16,7 +16,7 @@ Vous pouvez maintenant utiliser "Run As" > "Run on Server" sur le projet.
 
 Pour voir le rendu du projet sur un navigateur web : http://localhost:8080/pr.tp.web/ 
 
-### Organisation du projet
+## Organisation du projet
 
 Le projet comporte une servlet présente dans Chat.java
 Deux fichiers JSP : chat.jsp et login.jsp.
@@ -32,7 +32,7 @@ Dans web.xml nous avons définit login.jsp comme page d'accueil du site web :
 	</welcome-file-list>
 ```
 
-### Lancer dans Tomcat sans passer par Eclipse
+## Lancer dans Tomcat sans passer par Eclipse
 
 Un fichier WAR, pr.tp.web.war a été généré avec "export" > "WAR file" sur le projet dans Eclipse.
 
@@ -55,7 +55,7 @@ Vous pouvez maintenant lancer le script startup.bat contenu dans "apache-tomcat-
 
 
 
-### Question : Expliquez la signification de l'erreur 405.
+## Question : Expliquez la signification de l'erreur 405.
 
 ![](https://i.imgur.com/EnRfHZj.png)
 
