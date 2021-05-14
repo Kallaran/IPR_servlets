@@ -1,9 +1,5 @@
 # TP6 : Les servlets
 
-DERIEUX Jean
-DEMONGEOT Nicolas
-
-https://gitlab.istic.univ-rennes1.fr/16002266/pr.tp.web/
 
 L'objectif de ce tp est de se familiariser avec les servlets et les technologies associées en développant un chat.
 
