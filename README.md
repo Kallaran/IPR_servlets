@@ -7,7 +7,7 @@ L'objectif de ce tp est de se familiariser avec les servlets et les technologies
 
 
 
-# Configuration du projet
+## Configuration du projet
 
 1. Téléchargez la dernière version d'Eclipse IDE for Java EE Developers.
 2. Clonez ce repo dans le workplace d'Eclipse.
@@ -53,20 +53,4 @@ Vous pouvez maintenant lancer le script startup.bat contenu dans "apache-tomcat-
 
 ![](https://i.imgur.com/K6EIEAF.png)
 ![](https://i.imgur.com/HOvrrJI.png)
-
-
-
-
-
-
-## Question : Expliquez la signification de l'erreur 405.
-
-![](https://i.imgur.com/EnRfHZj.png)
-
-Le code de statut de réponse HTTP 405 Method Not Allowed indique que la méthode utilisée (GET) pour la requête est connue du serveur mais qu'elle n'est pas supportée par la ressource ciblée.
-
-Pour corriger cela il suffit de override doGet :
-
-![](https://i.imgur.com/JGjvbPi.png)
-
 
